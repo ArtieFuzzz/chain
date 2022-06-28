@@ -1,0 +1,14 @@
+{
+  "extends": "@artiefuzzz/ts",
+  "compilerOptions": {
+    "target": "ESNext",
+    "outDir": "../build",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "#lib/*": ["./lib/*"],
+      "#lib/env": ["./lib/env/parser.ts"]
+    }
+  },
+  "include": ["."]
+}
