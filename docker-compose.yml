@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  raven:
+    image: artiefuzzz/raven    
+    tty: true
+    restart: always
+    build: .
+    container_name: raven
+    env_file:
+      - "src/.env.development"
+      - "src/.env.development.local"
+      - "prisma/.env.production.local"
+    networks:
+      - chain
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:alpine
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - chain
+    volumes:
+      - './postgres:/var/lib/postgresql/data'
+networks:
+  chain:

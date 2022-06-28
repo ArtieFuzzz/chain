@@ -1,4 +1,5 @@
-import { Env } from './env/types'
+import type { PrismaClient } from '@prisma/client'
+import type { Env } from './env/types'
 
 declare global {
   namespace NodeJS {
@@ -9,5 +10,17 @@ declare global {
 declare module '@sapphire/framework' {
   interface Preconditions {
     OwnerOnly: never
+  }
+}
+
+declare module 'discord.js' {
+  interface Client {
+    prisma: PrismaClient
+  }
+}
+
+declare module '@sapphire/pieces' {
+  interface Container {
+    prisma: PrismaClient
   }
 }

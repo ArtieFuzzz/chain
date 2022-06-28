@@ -131,3 +131,6 @@ dist
 
 # Build directory
 build
+
+# PostgreSQL Docker Persistent Data
+postgres
