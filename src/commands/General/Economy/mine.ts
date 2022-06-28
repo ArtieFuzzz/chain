@@ -8,7 +8,7 @@ const TIME = Time.Minute * 2
 @ApplyOptions<Command.Options>({
   description: 'Mine for some bits!',
 })
-export class Ping extends Command {
+export class Mine extends Command {
   public override registerApplicationCommands(registry: ChatInputCommand.Registry): void {
     registry.registerChatInputCommand(
       (builder) =>
