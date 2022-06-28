@@ -1,3 +1,4 @@
+import { envParseInteger } from '#lib/env'
 import { ApplyOptions } from '@sapphire/decorators'
 import { ChatInputCommand, Command, RegisterBehavior } from '@sapphire/framework'
 import type { Message } from 'discord.js'
@@ -21,7 +22,7 @@ export class Upgrade extends Command {
   public override async chatInputRun(interaction: Command.ChatInputInteraction): Promise<Message | unknown> {
     const id = interaction.user.id
     const userData = await this.container.prisma.user.findUnique({ where: { id } })
-    const bits = userData!.bits - 150
+    const bits = userData!.bits - envParseInteger('UPGRADE_COST')
 
     if (bits < 0) {
       return await interaction.reply('You need more bits to upgrade.')

@@ -1,9 +1,10 @@
+import { envParseInteger } from '#lib/env'
 import { ApplyOptions } from '@sapphire/decorators'
 import { ChatInputCommand, Command, RegisterBehavior } from '@sapphire/framework'
 import { Time } from '@sapphire/time-utilities'
 import type { Message } from 'discord.js'
 
-const TIME = Time.Minute * 2
+const TIME = Time.Minute * envParseInteger('MINE_REWARD')
 
 @ApplyOptions<Command.Options>({
   description: 'Mine for some bits!',
