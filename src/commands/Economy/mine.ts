@@ -26,8 +26,6 @@ export class Mine extends Command {
     const userData = await this.container.prisma.user.findUnique({ where: { id } })
     const currentDate = new Date()
 
-    console.log(userData)
-
     if (!userData?.nextMine) {
       await this.container.prisma.user.update({
         where: {
